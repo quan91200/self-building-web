@@ -341,9 +341,52 @@ body, html, #root {
   font-size: 1.1rem;
 }
 
+/* Mobile Warning */
+.mobile-warning {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--preview-bg);
+  color: var(--text-main);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.mobile-warning-content {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  max-width: 90%;
+}
+
+.mobile-warning h1 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.mobile-warning p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 @media (max-width: 1024px) {
-  .app-container { flex-direction: column; }
-  .editor-pane, .preview-pane { flex: 1; }
+  /* Hide the main app on mobile/tablet */
+  .app-container {
+    display: none;
+  }
+
+  /* Show the warning */
+  .mobile-warning {
+    display: flex;
+  }
 }
 
 /* Component Styles for Portfolio */

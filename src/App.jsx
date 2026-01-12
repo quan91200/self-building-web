@@ -252,62 +252,71 @@ function App() {
   const currentContent = markdown.slice(0, visibleChars);
 
   return (
-    <div className={`app-container ${isCollapsed ? 'collapsed' : ''}`}>
-      <div className="editor-container">
-        <div className="editor-pane" ref={scrollRef}>
-          <div className="editor-header">
-            <div className="dots">
-              <span className="dot red"></span>
-              <span className="dot yellow"></span>
-              <span className="dot green"></span>
-            </div>
-            <div className="filename">portfolio.md</div>
-            <div style={{ flex: 1 }}></div>
-            <div className="editor-actions">
-              <button className="icon-btn" onClick={handleRestart} title="Start Again">↺</button>
-              <button className="icon-btn" onClick={() => setVisibleChars(markdown.length)} title="Skip Build">⏭</button>
-            </div>
-          </div>
-          <div className="editor-content">
-            <ReactMarkdown
-              components={{
-                code: CodeBlock
-              }}
-            >
-              {currentContent}
-            </ReactMarkdown>
-
-            {visibleChars >= markdown.length && (
-              <p className="final-message">
-                The build is complete. Welcome to the future of digital portfolios.
-              </p>
-            )}
-
-            {isTyping && <span className="cursor">|</span>}
-          </div>
-        </div>
-
-        <button
-          className="collapse-handle"
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          title={isCollapsed ? "Expand Editor" : "Collapse Editor"}
-        >
-          {isCollapsed ? '»' : '«'}
-        </button>
-      </div>
-
-      <div className="preview-pane">
-        {!isCollapsed && (
-          <div className="preview-header">
-            <div className="url-bar">localhost:3000 / portfolio</div>
-          </div>
-        )}
-        <div className="preview-content-wrapper">
-          <div id="preview-container" ref={previewContainerRef} />
-          <div id="live-construction-zone" ref={liveContainerRef} />
+    <>
+      <div className="mobile-warning">
+        <div className="mobile-warning-content">
+          <h1>Desktop Only</h1>
+          <p>This interactive portfolio requires a keyboard and a larger screen for the best experience.</p>
+          <p>Please visit on a desktop or laptop.</p>
         </div>
       </div>
-    </div>
+      <div className={`app-container ${isCollapsed ? 'collapsed' : ''}`}>
+        <div className="editor-container">
+          <div className="editor-pane" ref={scrollRef}>
+            <div className="editor-header">
+              <div className="dots">
+                <span className="dot red"></span>
+                <span className="dot yellow"></span>
+                <span className="dot green"></span>
+              </div>
+              <div className="filename">portfolio.md</div>
+              <div style={{ flex: 1 }}></div>
+              <div className="editor-actions">
+                <button className="icon-btn" onClick={handleRestart} title="Start Again">↺</button>
+                <button className="icon-btn" onClick={() => setVisibleChars(markdown.length)} title="Skip Build">⏭</button>
+              </div>
+            </div>
+            <div className="editor-content">
+              <ReactMarkdown
+                components={{
+                  code: CodeBlock
+                }}
+              >
+                {currentContent}
+              </ReactMarkdown>
+
+              {visibleChars >= markdown.length && (
+                <p className="final-message">
+                  The build is complete. Welcome to the future of digital portfolios.
+                </p>
+              )}
+
+              {isTyping && <span className="cursor">|</span>}
+            </div>
+          </div>
+
+          <button
+            className="collapse-handle"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            title={isCollapsed ? "Expand Editor" : "Collapse Editor"}
+          >
+            {isCollapsed ? '»' : '«'}
+          </button>
+        </div>
+
+        <div className="preview-pane">
+          {!isCollapsed && (
+            <div className="preview-header">
+              <div className="url-bar">localhost:3000 / portfolio</div>
+            </div>
+          )}
+          <div className="preview-content-wrapper">
+            <div id="preview-container" ref={previewContainerRef} />
+            <div id="live-construction-zone" ref={liveContainerRef} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
