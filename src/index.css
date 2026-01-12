@@ -1,0 +1,5 @@
+/* CSS reset or global styles if needed, currently everything in App.css */
+body {
+  margin: 0;
+  overflow: hidden;
+}
