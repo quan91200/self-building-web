@@ -299,6 +299,12 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.preview-content-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 #preview-container, #live-construction-zone {
