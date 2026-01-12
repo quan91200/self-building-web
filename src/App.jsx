@@ -7,7 +7,7 @@ import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-markdown';
 import './App.css';
 
-const PORTFOLIO_MD_PATH = '/src/portfolio.md';
+const PORTFOLIO_MD_PATH = '/portfolio.md';
 
 const CodeBlock = ({ inline, className, children }) => {
   const [copied, setCopied] = useState(false);
